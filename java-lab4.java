@@ -1,0 +1,69 @@
+package javalab6;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Emre
+ */
+public class Javalab6 {
+
+    int[] array;
+
+    Javalab6(int boyut) {
+        array = new int[boyut];
+        for (int i = 0; i < boyut; i++) {
+            array[i] = (int) (1 + Math.random() * 99);
+        }
+    }
+
+    public int sumToplam() {
+        int x = 0;
+        for (int i = 0; i < this.array.length; i++) {
+            x += this.array[i];
+        }
+        return x;
+    }
+
+    public static int[][] arrayOlustur(int satir_sayisi, int sutun_sayisi) {
+        int[][] dizi = new int[satir_sayisi][sutun_sayisi];
+        for (int i = 0; i < satir_sayisi; i++) {
+            for (int j = 0; j < sutun_sayisi; j++) {
+                dizi[i][j] = (int) (1 + Math.random() * 99);
+            }
+        }
+        return dizi;
+    }
+
+    public static void main(String args[]) {
+        // create the scanner
+        Scanner scan = new Scanner(System.in);
+
+        // working 1
+        System.out.println("Satır sayısı: ");
+        int satir = scan.nextInt();
+
+        System.out.println("Sütun sayısı:");
+        int sutun = scan.nextInt();
+
+        int[][]dizi = arrayOlustur(satir, sutun);
+
+        // working 2
+        System.out.println("-------calisma2---------");
+        System.out.println("Dizi boyutu: ");
+
+        int boyut = scan.nextInt();
+        Javalab6 calisma2 = new Javalab6(boyut);
+
+        System.out.println("Dizinin elemanları toplamı: " + calisma2.sumToplam());
+
+        ekranaYaz(calisma2.array);
+
+    }
+
+    public static void ekranaYaz(int[] b) {
+        for (int i = 0; i < b.length; i++) {
+            System.out.println(i + ": " + b[i]);
+        }
+    }
+}
